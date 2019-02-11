@@ -26,6 +26,7 @@ public class CryptocurrencyBank {
 
         seller.increaseSolde(i*add);
         seller.decreaseCryptocurrency(i);
+        countBuyer++;
         return i;
     }
 
