@@ -10,6 +10,7 @@ import java.util.Optional;
 @Service
 class CryptocurrencyBank {
 
+    private static final int FIRST_BUYER = 1;
     private List<String> supportedCryptoCurrencey = new LinkedList<>();
     private List<Customer> sellers = new ArrayList<>();
     private int buyersNumber;
@@ -57,7 +58,7 @@ class CryptocurrencyBank {
     }
 
     private int recalculateCryptoSellingPrice() {
-        if (buyersNumber==1) return 1;
+        if (buyersNumber== FIRST_BUYER) return 1;
         return buyersNumber*buyersNumber - buyersNumber;
     }
 
@@ -69,11 +70,11 @@ class CryptocurrencyBank {
         sellers.add(sellerCustomer);
     }
 
-    public List<String> getSupportedCryptoCurrencies() {
+     List<String> getSupportedCryptoCurrencies() {
         return supportedCryptoCurrencey;
     }
 
-    public void deleteSupportedCryptoCurrency(String cryptocurrencyName) {
+    void deleteSupportedCryptoCurrency(String cryptocurrencyName) {
         supportedCryptoCurrencey.remove(cryptocurrencyName);
     }
 }
