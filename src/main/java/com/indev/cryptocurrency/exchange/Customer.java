@@ -3,6 +3,7 @@ package com.indev.cryptocurrency.exchange;
 public class Customer {
     private String cryptoCurrency;
     private int balance;
+    private int cryptoCurrencyAmount;
 
 
     public Customer withCryptocurrency(String bitcoin, int i) {
@@ -17,6 +18,10 @@ public class Customer {
 
     @Override
     public String toString() {
-        return balance +":$,10:" + cryptoCurrency;
+        String stringToReturn = "";
+        stringToReturn += balance +":$";
+        if (cryptoCurrencyAmount > 0)
+            stringToReturn += "," + cryptoCurrency + ":" + cryptoCurrency;
+        return stringToReturn;
     }
 }
