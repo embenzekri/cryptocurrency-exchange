@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://travis-ci.org/embenzekri/cryptocurrency-exchange)
+[![Build Status](https://img.shields.io/travis/ielaazmaoui/cryptocurrency-exchange.svg?style=flat)](https://travis-ci.org/embenzekri/cryptocurrency-exchange)
 [![codecov](https://img.shields.io/codecov/c/github/ielaazmaoui/cryptocurrency-exchange.svg?style=flat)](https://codecov.io/gh/ielaazmaoui/cryptocurrency-exchange/branch/master)
 
 Cryptocurrency Exchange Test
