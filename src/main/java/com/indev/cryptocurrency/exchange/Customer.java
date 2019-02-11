@@ -6,9 +6,34 @@ public class Customer {
     private int cryptoCurrencyAmount;
 
 
-    public Customer withCryptocurrency(String bitcoin, int i) {
+    public Customer withCryptocurrency(String bitcoin, int cryptoCurrencyAmount) {
         this.cryptoCurrency = bitcoin;
+        this.cryptoCurrencyAmount = cryptoCurrencyAmount;
         return this;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public int getCryptoCurrencyAmount() {
+        return cryptoCurrencyAmount;
+    }
+
+    public String getCryptoCurrency() {
+        return cryptoCurrency;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void setCryptoCurrencyAmount(int cryptoCurrencyAmount) {
+        this.cryptoCurrencyAmount = cryptoCurrencyAmount;
+    }
+
+    public void setCryptoCurrency(String cryptoCurrency) {
+        this.cryptoCurrency = cryptoCurrency;
     }
 
     public Customer withBalance(int balance) {
@@ -21,7 +46,8 @@ public class Customer {
         String stringToReturn = "";
         stringToReturn += balance +":$";
         if (cryptoCurrencyAmount > 0)
-            stringToReturn += "," + cryptoCurrency + ":" + cryptoCurrency;
+            stringToReturn += "," + cryptoCurrencyAmount + ":" + cryptoCurrency;
         return stringToReturn;
     }
+
 }
