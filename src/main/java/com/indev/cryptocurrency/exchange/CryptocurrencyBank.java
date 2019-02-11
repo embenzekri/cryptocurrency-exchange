@@ -1,14 +1,21 @@
 package com.indev.cryptocurrency.exchange;
 
+import java.util.ArrayList;
+
 public class CryptocurrencyBank {
-    public void addSupportedCryptoCurrency(String bitcoin) {
-        
+
+    private ArrayList<String> supportedCryptoCurrencies =  new ArrayList<>();
+    Market market = new Market();
+    public void addSupportedCryptoCurrency(String currency) {
+        supportedCryptoCurrencies.add(currency);
     }
 
-    public int requestTransaction(Customer buyerCustomer, int i, String bitcoin) {
-        return 0;
+    public int requestTransaction(Customer buyerCustomer, int quantity, String currency) {
+        market.addBuyer(buyerCustomer);
+        return market.buy(buyerCustomer,quantity,currency);
     }
 
     public void addSeller(Customer sellerCustomer) {
+        market.addSeller(sellerCustomer);
     }
 }
