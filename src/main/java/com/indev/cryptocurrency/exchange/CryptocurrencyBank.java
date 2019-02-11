@@ -7,6 +7,7 @@ public class CryptocurrencyBank {
 
                 private List<Customer> sellers;
                 private int buyerRank;
+                private List<String> cryptocurrencies = new ArrayList<>();
                 CryptocurrencyBank() {
                     this.sellers = new ArrayList<>();
                 }
@@ -14,7 +15,7 @@ public class CryptocurrencyBank {
 
 
     void addSupportedCryptoCurrency(String bitcoin) {
-
+        cryptocurrencies.add(bitcoin);
 
     }
 
