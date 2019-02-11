@@ -11,12 +11,12 @@ import java.util.Optional;
 class CryptocurrencyBank {
 
     private static final int FIRST_BUYER = 1;
-    private List<String> supportedCryptoCurrencey = new LinkedList<>();
+    private List<String> supportedCryptoCurrencies = new LinkedList<>();
     private List<Customer> sellers = new ArrayList<>();
     private int buyersNumber;
 
     void addSupportedCryptoCurrency(String supportedCryptoCurrencey) {
-        this.supportedCryptoCurrencey.add(supportedCryptoCurrencey);
+        this.supportedCryptoCurrencies.add(supportedCryptoCurrencey);
     }
 
     int requestTransaction(Customer buyerCustomer, int requestCryptoBalance, String cryptoCurrencey) {
@@ -28,7 +28,7 @@ class CryptocurrencyBank {
     }
 
     private boolean isCryptocurrencySupported(String cryptoCurrencey) {
-        return supportedCryptoCurrencey.contains(cryptoCurrencey);
+        return supportedCryptoCurrencies.contains(cryptoCurrencey);
     }
 
     private int doTransaction(Customer buyerCustomer, int requestCryptoBalance, String cryptoCurrencey) {
@@ -71,10 +71,10 @@ class CryptocurrencyBank {
     }
 
      List<String> getSupportedCryptoCurrencies() {
-        return supportedCryptoCurrencey;
+        return supportedCryptoCurrencies;
     }
 
     void deleteSupportedCryptoCurrency(String cryptocurrencyName) {
-        supportedCryptoCurrencey.remove(cryptocurrencyName);
+        supportedCryptoCurrencies.remove(cryptocurrencyName);
     }
 }
