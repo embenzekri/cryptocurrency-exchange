@@ -1,10 +1,13 @@
 package com.indev.cryptocurrency.exchange;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 class CryptocurrencyBank {
 
     private List<String> supportedCryptoCurrencey = new LinkedList<>();
@@ -64,5 +67,13 @@ class CryptocurrencyBank {
 
     void addSeller(Customer sellerCustomer) {
         sellers.add(sellerCustomer);
+    }
+
+    public List<String> getSupportedCryptoCurrencies() {
+        return supportedCryptoCurrencey;
+    }
+
+    public void deleteSupportedCryptoCurrency(String cryptocurrencyName) {
+        supportedCryptoCurrencey.remove(cryptocurrencyName);
     }
 }
