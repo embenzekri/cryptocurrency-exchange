@@ -45,14 +45,14 @@ public class Customer {
         return this.cryptoCurrencey.equals(cryptoCurrencey);
     }
 
-    public void sell(int soldCrytpo) {
+    public void sell(int soldCrytpo, int cryptoSellingPrice) {
         cryptoBalance -= soldCrytpo;
-        balance += soldCrytpo;
+        balance += cryptoSellingPrice;
     }
 
-    public void buy(int boughtCrypto) {
+    public void buy(int boughtCrypto, int cryptoSellingPrice) {
         cryptoBalance += boughtCrypto;
-        balance -= boughtCrypto;
+        balance -= cryptoSellingPrice;
     }
 
     public boolean canSell() {
