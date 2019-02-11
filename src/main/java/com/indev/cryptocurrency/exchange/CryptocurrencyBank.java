@@ -1,7 +1,6 @@
 package com.indev.cryptocurrency.exchange;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class CryptocurrencyBank {
     private ArrayList<String> currencies = new ArrayList<>();
