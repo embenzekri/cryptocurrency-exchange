@@ -1,11 +1,14 @@
-package com.indev.cryptocurrency.exchange;
+package com.indev.cryptocurrency.exchange.api.com.indev.cryptocurrency;
+
+import com.indev.cryptocurrency.exchange.Customer;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class CryptocurrencyBank {
 
-    private List<String> cryptoCurrency = new ArrayList<>() ;
+     List<String> cryptoCurrency = new ArrayList<>() ;
     private int valueOfCurrency = 1 ;
      List<Customer> sellers = new ArrayList<>() ;
     private List<Customer> buyers = new ArrayList<>() ;
@@ -55,5 +58,13 @@ public class CryptocurrencyBank {
     }
     public void addSeller(Customer sellerCustomer) {
         sellers.add(sellerCustomer) ;
+    }
+
+    public List<String> getCryptoCurrency() {
+        return cryptoCurrency;
+    }
+
+    public void setCryptoCurrency(List<String> cryptoCurrency) {
+        this.cryptoCurrency = cryptoCurrency;
     }
 }

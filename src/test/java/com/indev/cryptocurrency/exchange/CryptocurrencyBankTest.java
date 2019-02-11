@@ -1,5 +1,6 @@
 package com.indev.cryptocurrency.exchange;
 
+import com.indev.cryptocurrency.exchange.api.com.indev.cryptocurrency.CryptocurrencyBank;
 import org.junit.Before;
 import org.junit.Test;
 
