@@ -5,7 +5,15 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+/*
+    A cryptocurrency exchange is a business that allows customers to trade cryptocurrencies.
 
+    This simple test demonstrate a cryptocurrency bank that allow customers to sell and buy cryptocurrencies without any fees.
+        - The cryptocurrency bank support a list of cryptocurrencies
+        - The cryptocurrency bank have a list of customers that are selling The cryptocurrencies
+        - The cryptocurrency price calculation is based on the Metcalfes's Law.
+        - The cryptocurrency price = n^2-n where n is the number of customer that are buying the cryptocurrency.
+ */
 public class CryptocurrencyBankTest {
 
     private CryptocurrencyBank cryptocurrencyBank = new CryptocurrencyBank();
@@ -17,6 +25,9 @@ public class CryptocurrencyBankTest {
         cryptocurrencyBank.addSupportedCryptoCurrency("Ethereum");
     }
 
+    /*
+        A customer may have a given quantity of a cryptocurrency in his wallet
+     */
     @Test
     public void shouldPrintCustomerWalletWithBitcoin() {
         Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
@@ -32,6 +43,9 @@ public class CryptocurrencyBankTest {
         assertThat(sellerCustomer.toString(), equalTo("0:$,10:Ethereum"));
     }
 
+    /*
+        A customer have a balance of $
+     */
     @Test
     public void shouldPrintCustomerWalletWithBalance() {
         Customer sellerCustomer = new Customer().withBalance(10000).withCryptocurrency("Bitcoin", 10);
@@ -39,6 +53,9 @@ public class CryptocurrencyBankTest {
         assertThat(sellerCustomer.toString(), equalTo("10000:$,10:Bitcoin"));
     }
 
+    /*
+        A customer can request to buy a given quantity of a cryptocurrency, if no seller are selling it, the transaction will not occur
+     */
     @Test
     public void shouldNotBuyWhenNoSeller() {
         Customer buyerCustomer = new Customer().withBalance(100);
@@ -49,6 +66,9 @@ public class CryptocurrencyBankTest {
         assertThat(buyerCustomer.toString(), equalTo("100:$"));
     }
 
+    /*
+        A customer can request to buy a given quantity of a cryptocurrency, when there are sellers, the base price is 1$
+     */
     @Test
     public void shouldBuyCryptocurrency() {
         Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
@@ -63,7 +83,9 @@ public class CryptocurrencyBankTest {
         assertThat(buyerCustomer.toString(), equalTo("97:$,3:Bitcoin"));
     }
 
-
+    /*
+        A customer can request to buy a given quantity of a cryptocurrency, when the sellers are not selling the wanted cryptocurrency, the transaction will not occur
+     */
     @Test
     public void shouldNotBuyCryptocurrencyWhenNotFound() {
         Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
@@ -78,6 +100,13 @@ public class CryptocurrencyBankTest {
         assertThat(buyerCustomer.toString(), equalTo("100:$"));
     }
 
+    /*
+        The cryptocurrency price is defined according to Metcalfe's Law.
+        the price = n^2-n, where n is the number of customers willing to buy the given cryptocurrency.
+        When there is only one buyer, for this particular case we will use the price = 1$
+        For example when there are 2 buyers, price = 2^2-1 = 2$
+        For example when there are 3 buyers, price = 3^2-1 = 6$
+     */
     @Test
     public void shouldBuyCryptocurrencyMetcalfeLaw() {
         Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
