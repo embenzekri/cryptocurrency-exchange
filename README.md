@@ -1,5 +1,5 @@
 [![Build Status](https://img.shields.io/travis/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://travis-ci.org/AKOTBISQLI/cryptocurrency-exchange)
-[![codecov](https://img.shields.io/codecov/c/github/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://codecov.io/gh/embenzekri/cryptocurrency-exchange/branch/master)
+[![codecov](https://img.shields.io/codecov/c/github/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://codecov.io/gh/AKOTBISQLI/cryptocurrency-exchange/branch/master)
 
 Cryptocurrency Exchange Test
 -----
