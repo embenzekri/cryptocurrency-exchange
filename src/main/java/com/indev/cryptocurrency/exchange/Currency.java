@@ -2,8 +2,8 @@ package com.indev.cryptocurrency.exchange;
 
 public enum Currency {
 
-    Bitcoin(1, "Bitcoin", 0),
-    Ethereum(2, "Ethereum", 0);
+    Bitcoin(1, "Bitcoin", 1),
+    Ethereum(2, "Ethereum", 1);
 
     private int id;
     private String name;

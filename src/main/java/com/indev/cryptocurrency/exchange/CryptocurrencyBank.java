@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 public class CryptocurrencyBank {
 
+    private static int cmp = 0;
+
     private HashMap<Integer, Currency> currencies = new HashMap<>();
     private Customer buyerCustomer;
     private Customer sellerCustomer;
@@ -15,8 +17,9 @@ public class CryptocurrencyBank {
 
     public int requestTransaction(Customer buyerCustomer, int quantiteCurrency, String currency) {
         if(sellerCustomer != null){
-            if(sellerCustomer.sellCurrency(quantiteCurrency, currency)){
-                buyerCustomer.buyCurrency(quantiteCurrency, currency);
+            cmp++;
+            if(sellerCustomer.sellCurrency(quantiteCurrency, currency, getPrice())){
+                buyerCustomer.buyCurrency(quantiteCurrency, currency, getPrice());
                 return quantiteCurrency;
             }
         }
@@ -26,5 +29,10 @@ public class CryptocurrencyBank {
     public void addSeller(Customer sellerCustomer) {
         this.sellerCustomer = new Customer();
         this.sellerCustomer = sellerCustomer;
+    }
+
+    private int getPrice(){
+        if(cmp == 1) return 1;
+        return cmp*cmp - cmp;
     }
 }

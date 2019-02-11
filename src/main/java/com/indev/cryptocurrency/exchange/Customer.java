@@ -44,21 +44,20 @@ public class Customer {
         return present;
     }
 
-    public boolean sellCurrency(int quantiteCurrency, String currency) {
+    public boolean sellCurrency(int quantiteCurrency, String currency, int price) {
         if(isCurrencyExist(currency)){
             balanceHashMap.put(currency, balanceHashMap.get(currency) - quantiteCurrency);
-            balanceHashMap.put(DOLLAR, balanceHashMap.get(DOLLAR) + quantiteCurrency);
+            balanceHashMap.put(DOLLAR, balanceHashMap.get(DOLLAR) + quantiteCurrency * price);
             return true;
         }
         return false;
     }
 
-    public void buyCurrency(int quantiteCurrency, String currency) {
+    public void buyCurrency(int quantiteCurrency, String currency, int price) {
         if(!isCurrencyExist(currency)){
             balanceHashMap.put(currency, 0);
             balanceHashMap.put(currency, balanceHashMap.get(currency) + quantiteCurrency);
-            balanceHashMap.put(DOLLAR, balanceHashMap.get(DOLLAR) - quantiteCurrency);
+            balanceHashMap.put(DOLLAR, balanceHashMap.get(DOLLAR) - quantiteCurrency * price);
         }
-
     }
 }
