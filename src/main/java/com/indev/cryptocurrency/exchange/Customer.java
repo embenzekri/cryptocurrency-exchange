@@ -1,31 +1,51 @@
 package com.indev.cryptocurrency.exchange;
 
 public class Customer {
+    private String cryptocurrencyName;
+    private int dolars;
+    private int numberOfCurrency;
 
-    private String support ;
-    private int balance ;
-    private int price;
 
-    public Customer withCryptocurrency(String support, int price) {
-        price = price;
-        support =support;
+
+        public Customer withCryptocurrency(String CryptoName, int numberOfCryppto) {
+        numberOfCurrency = numberOfCryppto;
+        cryptocurrencyName =CryptoName;
         return this;
     }
 
 
     public Customer withBalance(int Balance) {
-        balance=Balance;
+        dolars=Balance;
         return this;
     }
 
     @Override
     public String toString() {
-        String string =balance+":$";
-        if (price>0)
-        string+= ","+price+":"+ support;
-        return string;
+        String result =dolars+":$";
+        if (numberOfCurrency>0)
+            result+= ","+numberOfCurrency+":"+ cryptocurrencyName;
+        return result;
 
     }
+        public boolean haveEnoughQuantity(int qantity){
+            return numberOfCurrency>=qantity;
+        }
+        public boolean haveTheSameCryptocurrency(String cryptoName){
+            return cryptocurrencyName.equals(cryptoName);
+        }
+        void addDolars(int quantity){
+            dolars+=quantity;
+        }
+        void substructDolars(int quantity){
+            dolars-=quantity;
+        }
+        void addCrypto(int quantity, String cryptoName){
+            cryptocurrencyName=cryptoName;
+            numberOfCurrency+=quantity;
+        }
+        void substructCrypto(int quantity){
+            numberOfCurrency-=quantity;
+        }
 
 
-}
+    }
