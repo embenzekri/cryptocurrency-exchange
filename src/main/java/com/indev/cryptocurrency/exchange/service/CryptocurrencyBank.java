@@ -1,7 +1,10 @@
-package com.indev.cryptocurrency.exchange;
+package com.indev.cryptocurrency.exchange.service;
+
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 
+@Service
 public class CryptocurrencyBank {
 
     private static int numberBuyers = 0;

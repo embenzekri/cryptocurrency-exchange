@@ -1,4 +1,4 @@
-package com.indev.cryptocurrency.exchange;
+package com.indev.cryptocurrency.exchange.service;
 
 public enum CurrencyEnum {
 

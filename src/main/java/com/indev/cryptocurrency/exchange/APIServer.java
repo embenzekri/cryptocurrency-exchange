@@ -1,5 +1,7 @@
 package com.indev.cryptocurrency.exchange;
 
+import com.indev.cryptocurrency.exchange.service.CryptocurrencyBank;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,6 +26,9 @@ public class APIServer {
 
 @RestController
 class CustomerController {
+
+    @Autowired
+    private CryptocurrencyBank cryptocurrencyBank;
 
     private List<String> currencies = new ArrayList<>();
 
