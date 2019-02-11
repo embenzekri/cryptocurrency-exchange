@@ -22,18 +22,18 @@ public class Customer {
         Integer ballance = wallet.get("$");
         Integer bitcoin = wallet.get("Bitcoin");
         Integer ethereum = wallet.get("Ethereum");
-        String wallet = "";
+        String walletMessage = "";
         if (ballance == null) {
-            wallet += 0 + ":$";
+            walletMessage += 0 + ":$";
         } else {
-            wallet += ballance + ":$";
+            walletMessage += ballance + ":$";
         }
         if (bitcoin != null) {
-            wallet += "," + bitcoin + ":Bitcoin";
+            walletMessage += "," + bitcoin + ":Bitcoin";
         } else if (ethereum != null) {
-            wallet += "," + ethereum + ":Ethereum";
+            walletMessage += "," + ethereum + ":Ethereum";
         }
-        return wallet;
+        return walletMessage;
     }
 
     public int buy(Customer buyerCustomer, int quantity, String currency) {

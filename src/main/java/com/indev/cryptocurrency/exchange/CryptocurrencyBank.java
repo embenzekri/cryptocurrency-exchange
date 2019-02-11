@@ -12,8 +12,7 @@ public class CryptocurrencyBank {
 
     public int requestTransaction(Customer buyerCustomer, int quantity, String currency) {
         market.addBuyer(buyerCustomer);
-        int boughtQuantity =  market.buy(buyerCustomer,quantity,currency);
-        return boughtQuantity;
+        return market.buy(buyerCustomer,quantity,currency);
     }
 
     public void addSeller(Customer sellerCustomer) {
