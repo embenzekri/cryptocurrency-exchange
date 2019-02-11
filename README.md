@@ -1,5 +1,5 @@
-[![Build Status](https://img.shields.io/travis/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://travis-ci.org/embenzekri/cryptocurrency-exchange)
-[![codecov](https://img.shields.io/codecov/c/github/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://codecov.io/gh/embenzekri/cryptocurrency-exchange/branch/master)
+[![Build Status](https://img.shields.io/travis/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://travis-ci.org/ELMORABITYounes/cryptocurrency-exchange)
+[![codecov](https://img.shields.io/codecov/c/github/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://codecov.io/gh/ELMORABITYounes/cryptocurrency-exchange)
 
 Cryptocurrency Exchange Test
 -----
@@ -12,4 +12,5 @@ This simple test demonstrate a cryptocurrency bank that allow customers to sell 
 - The cryptocurrency bank have a list of customers that are selling The cryptocurrencies
 - The cryptocurrency price calculation is based on the Metcalfes's Law.
 - The cryptocurrency price = n^2-n where n is the number of customer that are buying the cryptocurrency.
+- test
 
