@@ -1,11 +1,19 @@
 package com.indev.cryptocurrency.exchange;
 
-import java.util.ArrayList;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
 public class CryptocurrencyBank {
-    ArrayList<String> supportedCryptoCurrency;
+    ArrayList<String> supportedCryptoCurrency ;
     ArrayList<Customer> sellers;
     Integer buyersQueue = 1;
+
+    public CryptocurrencyBank() {
+        initSupportedCryptoCurrency();
+    }
 
     public void addSupportedCryptoCurrency(String currency) {
         if (isExistSupportedCryptoCurrency()) {
@@ -40,8 +48,9 @@ public class CryptocurrencyBank {
         return supportedCryptoCurrency != null;
     }
 
-    private void initSupportedCryptoCurrency() {
+    public void initSupportedCryptoCurrency() {
         supportedCryptoCurrency = new ArrayList<>();
+
     }
 
     private void initSellers() {
@@ -54,4 +63,11 @@ public class CryptocurrencyBank {
     Integer mecalfeLawQueue(int queue){
         if (queue==1) return 1;
         return (queue*queue)- queue; }
+
+    public List<String> getSupportedCryptoCurrency() {
+        return supportedCryptoCurrency;
+    }
+    public void removeSupportedCurrency(){
+        supportedCryptoCurrency.remove(supportedCryptoCurrency.size()-1);
+    }
 }
