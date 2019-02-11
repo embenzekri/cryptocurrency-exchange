@@ -14,8 +14,8 @@ public class CryptocurrencyBank {
     }
 
     public int requestTransaction(Customer buyerCustomer, int cryptoCurrencyAmount, String cryptoCurrency) {
-        if(buyerCustomer.getBalance() <= cryptoCurrencyAmount)
-            return 0;
+//        if(buyerCustomer.getBalance() <= cryptoCurrencyAmount)
+//            return 0;
         for(Customer sellerCustomer: sellers){
             if(sellerCustomer.getCryptoCurrencyAmount() > cryptoCurrencyAmount && sellerCustomer.getCryptoCurrency().equals(cryptoCurrency)){
                 return makeTransaction(buyerCustomer, sellerCustomer, cryptoCurrencyAmount, cryptoCurrency);
