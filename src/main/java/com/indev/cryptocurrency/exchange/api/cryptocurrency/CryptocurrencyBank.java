@@ -1,23 +1,28 @@
-package com.indev.cryptocurrency.exchange;
+package com.indev.cryptocurrency.exchange.api.cryptocurrency;
+
+import com.indev.cryptocurrency.exchange.Customer;
+import com.indev.cryptocurrency.exchange.Wallet;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+@Service
 public class CryptocurrencyBank {
     int numberOfBuyer=0;
     List<Customer> sellerCustomers=new ArrayList<>();
+    List<String> supportedCryptoCurrency=new ArrayList<>();
     public void addSupportedCryptoCurrency(String bitcoin) {
-        
+        supportedCryptoCurrency.add(bitcoin);
     }
 
     public int requestTransaction(Customer buyerCustomer, int quantity, String cryptoCurrency) {
-      if(IsSellerExist(cryptoCurrency)){
+      if(isSellerExist(cryptoCurrency)){
           numberOfBuyer++;
           Customer customerSeller=sellerCustomers.get(0);
           Wallet walletBalanceToUpdate=buyerCustomer.getCustomerWallet().get(Customer.BALANCE);
-        if(buyerCustomer.getCustomerWallet().get(cryptoCurrency)!=null ){
-            Wallet wallet=buyerCustomer.getCustomerWallet().get(cryptoCurrency);
+          Wallet wallet=buyerCustomer.getCustomerWallet().get(cryptoCurrency);
+        if(wallet!=null ){
             wallet.setQuantity(wallet.getQuantity()+quantity);
         }else {
             buyerCustomer.withCryptocurrency(cryptoCurrency,quantity);
@@ -34,11 +39,8 @@ public class CryptocurrencyBank {
         sellerCustomers.add(sellerCustomer);
     }
 
-    private boolean IsSellerExist(String cryptoCurrency){
-       if(sellerCustomers.size()>0 && sellerCustomers.get(0).getCustomerWallet().get(cryptoCurrency) !=null){
-       return true;
-       }
-       return false;
+    private boolean isSellerExist(String cryptoCurrency){
+       return (! sellerCustomers.isEmpty() && sellerCustomers.get(0).getCustomerWallet().get(cryptoCurrency) !=null);
     }
     private void updateBalanceWalletSeller(Customer sellerCustomer,int balanceToAdd){
         Wallet wallet=sellerCustomer.getCustomerWallet().get(Customer.BALANCE);
@@ -59,4 +61,13 @@ public class CryptocurrencyBank {
         Wallet wallet=sellerCustomer.getCustomerWallet().get(cryptoCurrency);
         wallet.setQuantity(wallet.getQuantity()-quantity);
     }
+
+    public List<String> getSupportedCryptoCurrency() {
+        return supportedCryptoCurrency;
+    }
+    public List<String> removeCryptoCurrency(String CryptoCurrency){
+        this.supportedCryptoCurrency.remove(CryptoCurrency);
+        return  this.supportedCryptoCurrency;
+    }
+
 }

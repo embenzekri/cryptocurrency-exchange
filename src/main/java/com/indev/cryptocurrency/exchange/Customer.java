@@ -31,20 +31,18 @@ public class Customer {
 
     @Override
     public String toString() {
-        String customerWalletString="";
+        StringBuilder customerWalletString =new StringBuilder();
         for (Wallet wallet:customerWallet.values()){
-            customerWalletString+=wallet.getQuantity()+""+WALLET_SEPARATOR+""+wallet.getName();
-            customerWalletString+=SEPARATOR;
+            customerWalletString.append(wallet.getQuantity());
+            customerWalletString.append(WALLET_SEPARATOR);
+            customerWalletString.append(wallet.getName());
+            customerWalletString.append(SEPARATOR);
         }
-        customerWalletString=customerWalletString.substring(0,customerWalletString.length()-1);
-        return  customerWalletString;
+        return  customerWalletString.toString().substring(0,customerWalletString.toString().length()-1);
     }
 
     public Map<String, Wallet> getCustomerWallet() {
         return customerWallet;
     }
 
-    public void setCustomerWallet(Map<String, Wallet> customerWallet) {
-        this.customerWallet = customerWallet;
-    }
 }

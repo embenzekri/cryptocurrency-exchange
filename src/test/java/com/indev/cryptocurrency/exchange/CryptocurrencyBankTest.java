@@ -1,5 +1,6 @@
 package com.indev.cryptocurrency.exchange;
 
+import com.indev.cryptocurrency.exchange.api.cryptocurrency.CryptocurrencyBank;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -76,7 +77,6 @@ public class CryptocurrencyBankTest {
         assertThat(sellerCustomer.toString(), equalTo("0:$,10:Bitcoin"));
         assertThat(buyerCustomer.toString(), equalTo("100:$"));
     }
- // p=n²-m , m=buyerCointer
     @Test
     public void shouldBuyCryptocurrencyMetcalfeLaw() {
         Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
