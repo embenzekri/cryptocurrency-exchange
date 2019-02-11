@@ -1,6 +1,7 @@
 package com.indev.cryptocurrency.exchange;
 
 public class CryptocurrencyBank {
+
     public void addSupportedCryptoCurrency(String bitcoin) {
         
     }
@@ -10,5 +11,8 @@ public class CryptocurrencyBank {
     }
 
     public void addSeller(Customer sellerCustomer) {
+
     }
+
+
 }
