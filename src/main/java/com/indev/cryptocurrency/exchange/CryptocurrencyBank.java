@@ -6,17 +6,17 @@ public class CryptocurrencyBank {
 
     private static int numberBuyers = 0;
 
-    private HashMap<Integer, Currency> currencies = new HashMap<>();
+    private HashMap<Integer, CurrencyEnum> currencies = new HashMap<>();
     private Customer sellerCustomer;
 
     public void addSupportedCryptoCurrency(String currencyName) {
-        Currency currency = Currency.valueOf(currencyName);
+        CurrencyEnum currency = CurrencyEnum.valueOf(currencyName);
         currencies.put(currency.getId(), currency);
     }
 
     public int requestTransaction(Customer buyerCustomer, int quantiteCurrency, String currency) {
         if(sellerCustomer != null){
-            numberBuyers++;
+                numberBuyers++;
             if(sellerCustomer.sellCurrency(quantiteCurrency, currency, getPrice())){
                 buyerCustomer.buyCurrency(quantiteCurrency, currency, getPrice());
                 return quantiteCurrency;
