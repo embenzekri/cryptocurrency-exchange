@@ -27,7 +27,6 @@ public class Customer {
 
     boolean isExistCurrencies() {
         if (currenciesSolde == null) {
-            currenciesSolde = new HashMap<>();
             return false;
         } else {
             return true;
