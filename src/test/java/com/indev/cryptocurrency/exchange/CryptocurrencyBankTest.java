@@ -31,7 +31,6 @@ public class CryptocurrencyBankTest {
 
         assertThat(sellerCustomer.toString(), equalTo("0:$,10:Ethereum"));
     }
-
     @Test
     public void shouldPrintCustomerWalletWithBalance() {
         Customer sellerCustomer = new Customer().withBalance(10000).withCryptocurrency("Bitcoin", 10);
@@ -77,7 +76,7 @@ public class CryptocurrencyBankTest {
         assertThat(sellerCustomer.toString(), equalTo("0:$,10:Bitcoin"));
         assertThat(buyerCustomer.toString(), equalTo("100:$"));
     }
-
+ // p=n²-m , m=buyerCointer
     @Test
     public void shouldBuyCryptocurrencyMetcalfeLaw() {
         Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
