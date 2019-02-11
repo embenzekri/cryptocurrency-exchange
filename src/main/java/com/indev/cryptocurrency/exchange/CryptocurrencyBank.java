@@ -7,7 +7,6 @@ public class CryptocurrencyBank {
     private static int cmp = 0;
 
     private HashMap<Integer, Currency> currencies = new HashMap<>();
-    private Customer buyerCustomer;
     private Customer sellerCustomer;
 
     public void addSupportedCryptoCurrency(String currencyName) {
