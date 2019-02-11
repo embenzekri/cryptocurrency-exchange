@@ -20,9 +20,6 @@ public class Customer {
         return cryptoCurrencyAmount;
     }
 
-    public String getCryptoCurrency() {
-        return cryptoCurrency;
-    }
 
     public void setBalance(int balance) {
         this.balance = balance;
