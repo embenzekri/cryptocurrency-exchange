@@ -26,15 +26,14 @@ public class CryptocurrencyBank {
     }
 
     private int makeTransaction(Customer buyerCustomer, Customer sellerCustomer, int cryptoCurrencyAmount, String cryptoCurrency) {
+        addBuyer(buyerCustomer);
+
         sellerCustomer.setCryptoCurrencyAmount(sellerCustomer.getCryptoCurrencyAmount() - cryptoCurrencyAmount);
-        sellerCustomer.setBalance(sellerCustomer.getBalance() + cryptoCurrencyAmount*cryptoCurrencyPrice );
+        sellerCustomer.setBalance(sellerCustomer.getBalance() + cryptoCurrencyAmount * cryptoCurrencyPrice );
 
         buyerCustomer.setCryptoCurrencyAmount(buyerCustomer.getCryptoCurrencyAmount() + cryptoCurrencyAmount);
-        buyerCustomer.setBalance(buyerCustomer.getBalance() - cryptoCurrencyAmount*cryptoCurrencyPrice );
+        buyerCustomer.setBalance(buyerCustomer.getBalance() - cryptoCurrencyAmount * cryptoCurrencyPrice );
         buyerCustomer.setCryptoCurrency(cryptoCurrency);
-
-
-        addBuyer(buyerCustomer);
 
         return cryptoCurrencyAmount;
     }
@@ -48,10 +47,12 @@ public class CryptocurrencyBank {
     }
 
     private void updateCryptoCurrencyRate(){
-
-        int numberOfBuyers = buyers.size() + 1;
+        if(buyers.size() == 1){
+            cryptoCurrencyPrice = 1;
+            return;
+        }
+        int numberOfBuyers = buyers.size();
         cryptoCurrencyPrice = (numberOfBuyers * numberOfBuyers) - numberOfBuyers;
-        System.out.println(cryptoCurrencyPrice);
     }
 
 
