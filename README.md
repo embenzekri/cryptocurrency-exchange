@@ -1,9 +1,8 @@
-[![Build Status](https://img.shields.io/travis/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://travis-ci.org/embenzekri/cryptocurrency-exchange)
-[![codecov](https://img.shields.io/codecov/c/github/embenzekri/cryptocurrency-exchange.svg?style=flat)](https://codecov.io/gh/embenzekri/cryptocurrency-exchange/branch/master)
-
+[![Build Status](https://img.shields.io/travis/aitbahaa/cryptocurrency-exchange.svg?style=flat)](https://travis-ci.org/aitbahaa/cryptocurrency-exchange)
+[![codecov](https://img.shields.io/codecov/c/github/aitbahaa/cryptocurrency-exchange.svg?style=flat)](https://codecov.io/gh/aitbahaa/cryptocurrency-exchange/branch/master)
+ 
 Cryptocurrency Exchange Test
 -----
-
 A cryptocurrency exchange is a business that allows customers to trade cryptocurrencies.
 
 This simple test demonstrate a cryptocurrency bank that allow customers to sell and buy cryptocurrencies without any fees.
