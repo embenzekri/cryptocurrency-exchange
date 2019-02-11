@@ -1,14 +1,11 @@
 package com.indev.cryptocurrency.exchange;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Customer {
-    private final int amountInitial = 0;
+    private static final int AMOUNT_INITIAL = 0;
     private String cryptoCurrency ;
-    private int amountCryptoCurrency = amountInitial;
-    private int amountDollars= amountInitial;
+    private int amountCryptoCurrency = AMOUNT_INITIAL;
+    private int amountDollars= AMOUNT_INITIAL;
     public Customer withCryptoCurrency(String cryptoCurrency, int amount) {
         this.amountCryptoCurrency = amount ;
         this.cryptoCurrency = cryptoCurrency ;
