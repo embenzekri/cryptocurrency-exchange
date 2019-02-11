@@ -4,19 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Customer {
-
-    Map<String,Integer> wallet = new HashMap<>();
+    Market market = new Market();
+    Map<String, Integer> wallet = new HashMap<>();
 
     public Customer withCryptocurrency(String currency, int quantity) {
-        wallet.put(currency,quantity);
-        Market.addCustomer(this);
+        wallet.put(currency, quantity);
         return this;
     }
 
-    public Customer withBalance(int quantity)
-    {
-        wallet.put("$",quantity);
-        Market.addCustomer(this);
+    public Customer withBalance(int quantity) {
+        wallet.put("$", quantity);
         return this;
     }
 
@@ -26,22 +23,45 @@ public class Customer {
         Integer bitcoin = wallet.get("Bitcoin");
         Integer ethereum = wallet.get("Ethereum");
         String wallet = "";
-        if(ballance == null){
-            wallet += 0+":$";
+        if (ballance == null) {
+            wallet += 0 + ":$";
+        } else {
+            wallet += ballance + ":$";
         }
-        else {
-            wallet += ballance+":$";
-        }
-        if(bitcoin != null){
-            wallet += ","+bitcoin+":Bitcoin";
-        }
-        else if (ethereum != null){
-            wallet += ","+ethereum+":Ethereum";
+        if (bitcoin != null) {
+            wallet += "," + bitcoin + ":Bitcoin";
+        } else if (ethereum != null) {
+            wallet += "," + ethereum + ":Ethereum";
         }
         return wallet;
     }
 
     public int buy(Customer buyerCustomer, int quantity, String currency) {
-        return Market.buy(buyerCustomer,quantity,currency);
+        return market.buy(buyerCustomer, quantity, currency);
+    }
+
+    public void updateSeller(int price, int quantity, String currency) {
+        if (wallet.get(currency) != null) {
+            this.wallet.put(currency, wallet.get(currency) - quantity);
+        } else {
+            this.wallet.put(currency, quantity);
+        }
+        if (this.wallet.get("$") != null) {
+            this.wallet.put("$", this.wallet.get("$") + price * quantity);
+        } else {
+            this.wallet.put("$", price * quantity);
+
+        }
+    }
+
+
+    public void updateBuyer(int price, int quantity, String currency) {
+        if(this.wallet.get(currency) != null) {
+            this.wallet.put(currency, this.wallet.get(currency) - quantity);
+        }
+        else{
+            this.wallet.put(currency,  quantity);
+        }
+    this.wallet.put("$", wallet.get("$") - (price * quantity));
     }
 }
