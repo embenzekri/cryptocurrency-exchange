@@ -5,12 +5,12 @@ import java.util.*;
 public class CryptocurrencyBank {
 
     Set<String> suportedCryptoCurrency;
-    List<Customer> buyers;
+    int buyersNumber;
     List<Customer> sellers;
 
     public CryptocurrencyBank() {
         this.suportedCryptoCurrency=new HashSet<>();
-        buyers=new ArrayList<Customer>();
+        buyersNumber=0;
         sellers=new ArrayList<Customer>();
     }
 
@@ -18,12 +18,36 @@ public class CryptocurrencyBank {
         suportedCryptoCurrency.add(cryptoCurrency);
     }
 
-    public int requestTransaction(Customer buyerCustomer, int i, String bitcoin) {
-        if (sellers.isEmpty())
+    public int requestTransaction(Customer buyerCustomer, int amount, String cryptocurrency) {
+        buyersNumber++;
+        if (sellers.isEmpty()){
             return 0;
-        return 0;
+        }
+        Optional<Customer> seller=getSeller(cryptocurrency,amount);
+        if (seller.isPresent()){
+            seller.get().reduceCryptocurrencyBalance(amount).addBalance(amount*getCryptocurrencyValue());
+            buyerCustomer.reduceBalance(amount*getCryptocurrencyValue());
+            if (buyerCustomer.hasCryptocurencyBalance())
+                buyerCustomer.addCryptocurrencyBalance(amount);
+            else
+                buyerCustomer.withCryptocurrency(cryptocurrency,amount);
+            return amount;
+        }else
+            return 0;
+    }
+
+    private Optional<Customer> getSeller(String cryptocurrency,Integer amount){
+         return this.sellers.stream().filter(costumer->(costumer.hasEnaughBalanceToSell(amount) && costumer.hasCryptocurency(cryptocurrency))).findFirst();
     }
 
     public void addSeller(Customer sellerCustomer) {
+        this.sellers.add(sellerCustomer);
+    }
+
+    private Integer getCryptocurrencyValue(){
+        if (buyersNumber==0 || buyersNumber==1){
+            return 1;
+        }else
+            return buyersNumber*buyersNumber-buyersNumber;
     }
 }
