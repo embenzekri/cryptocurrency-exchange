@@ -1,22 +1,35 @@
 package com.indev.cryptocurrency.exchange;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class CryptocurrencyBank {
+class CryptocurrencyBank {
 
-    private String supportedCryptoCurrencey;
+    private List<String> supportedCryptoCurrencey = new LinkedList<>();
     private List<Customer> sellers = new ArrayList<>();
     private int buyersNumber;
 
-    public void addSupportedCryptoCurrency(String supportedCryptoCurrencey) {
-        this.supportedCryptoCurrencey = supportedCryptoCurrencey;
+    void addSupportedCryptoCurrency(String supportedCryptoCurrencey) {
+        this.supportedCryptoCurrencey.add(supportedCryptoCurrencey);
     }
 
-    public int requestTransaction(Customer buyerCustomer, int requestCryptoBalance, String cryptoCurrencey) {
+    int requestTransaction(Customer buyerCustomer, int requestCryptoBalance, String cryptoCurrencey) {
+        int soldCryptocurrency = 0;
+        if(isCryptocurrencySupported(cryptoCurrencey)){
+            soldCryptocurrency = doTransaction(buyerCustomer, requestCryptoBalance, cryptoCurrencey);
+        }
+        return soldCryptocurrency;
+    }
+
+    private boolean isCryptocurrencySupported(String cryptoCurrencey) {
+        return supportedCryptoCurrencey.contains(cryptoCurrencey);
+    }
+
+    private int doTransaction(Customer buyerCustomer, int requestCryptoBalance, String cryptoCurrencey) {
         Optional<Customer> sellerCustomer = findSellerWithCryptocurrency(cryptoCurrencey);
-        
+
         int soldCryptocurrency = 0;
 
         if(sellerCustomer.isPresent() && sellerCustomer.get().canSell() ){
@@ -24,7 +37,6 @@ public class CryptocurrencyBank {
             incrementBuyers();
 
             int cryptoSellingPrice = recalculateCryptoSellingPrice() * requestCryptoBalance;
-
 
             sellerCustomer.get().sell(requestCryptoBalance, cryptoSellingPrice);
 
@@ -50,7 +62,7 @@ public class CryptocurrencyBank {
         return sellers.stream().filter(customer -> customer.isSellingCryptocurrency(cryptoCurrencey)).findFirst();
     }
 
-    public void addSeller(Customer sellerCustomer) {
+    void addSeller(Customer sellerCustomer) {
         sellers.add(sellerCustomer);
     }
 }
