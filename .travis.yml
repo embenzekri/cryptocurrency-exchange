@@ -1,7 +1,6 @@
 language: java
 
 script:
-    clean package cobertura:cobertura
     "mvn cobertura:cobertura "
 
 after_success:
