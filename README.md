@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/aitbahaa/cryptocurrency-exchange.svg?style=flat)](https://travis-ci.org/aitbahaa/cryptocurrency-exchange)
+[![Build Status](https://img.shields.io/travis/aitbahaa/cryptocurrency-exchange.svg?style=flat)](https://travis-ci.com/aitbahaa/cryptocurrency-exchange)
 [![codecov](https://img.shields.io/codecov/c/github/aitbahaa/cryptocurrency-exchange.svg?style=flat)](https://codecov.io/gh/aitbahaa/cryptocurrency-exchange/branch/master)
  
 Cryptocurrency Exchange Test
