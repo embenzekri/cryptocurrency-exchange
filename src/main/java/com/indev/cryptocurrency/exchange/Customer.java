@@ -1,11 +1,31 @@
 package com.indev.cryptocurrency.exchange;
 
 public class Customer {
-    public Customer withCryptocurrency(String bitcoin, int i) {
-        return null;
+    private String cryptocurrency;
+    private Integer balancesWithCryptocurrency;
+    private Integer balance;
+
+    public Customer() {
+        balance=0;
     }
 
-    public Customer withBalance(int i) {
-        return null;
+    public Customer withCryptocurrency(String cryptocurrency, int balance) {
+        this.cryptocurrency=cryptocurrency;
+        this.balancesWithCryptocurrency=balance;
+        return this;
+    }
+
+    public Customer withBalance(int balance) {
+        this.balance=balance;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        String presentation="";
+        presentation+=balance+":$";
+        if (balancesWithCryptocurrency!=null)
+            presentation+=","+balancesWithCryptocurrency+":"+cryptocurrency;
+        return presentation;
     }
 }
