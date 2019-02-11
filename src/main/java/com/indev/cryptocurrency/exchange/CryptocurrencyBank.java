@@ -3,7 +3,6 @@ package com.indev.cryptocurrency.exchange;
 import java.util.ArrayList;
 
 public class CryptocurrencyBank {
-
     ArrayList<String> supportedCryptoCurrency;
     ArrayList<Customer> sellers;
     Integer buyersQueue = 1;
