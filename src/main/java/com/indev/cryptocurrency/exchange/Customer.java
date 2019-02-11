@@ -8,7 +8,7 @@ public class Customer {
     public Customer withCryptocurrency(String bitcoin, int i) {
 
 currencies.put(bitcoin,i);
-        System.out.println(currencies.size());
+
 
         return this;
     }
@@ -21,8 +21,8 @@ currencies.put(bitcoin,i);
     @Override
     public String toString() {
         String ret=this.nbrDollar+":$";
-        System.out.println("this dol "+this.nbrDollar);
-       Set<String> ta=currencies.keySet();
+
+
         Enumeration e=currencies.keys();
         String parama;
         while (e.hasMoreElements()){
@@ -30,19 +30,20 @@ currencies.put(bitcoin,i);
                ret+=","+currencies.get(parama)+":"+parama ;
 
       }
-        System.out.println(ret);
+
+
       return ret;
     }
 
     public Customer() {
-        this.currencies = new Hashtable<String,Integer> (); ;
+        this.currencies = new Hashtable<String,Integer> ();
     }
 
     public int getNbrDollar() {
         return nbrDollar;
     }
 
-    public Hashtable<String, Integer> getCurrencies() {
+    public Map<String, Integer> getCurrencies() {
         return currencies;
     }
 
@@ -69,11 +70,12 @@ currencies.put(bitcoin,i);
     public void setCurrencieForBuyer(String bit,int nv,int count) {
 
 
-        if (count>1)
-        this.withBalance(this.nbrDollar-nv*(count*count-count));
+             if (count>1) {
+                 this.withBalance(this.nbrDollar - nv * (count * count - count));
+             }
         else
             this.withBalance(this.nbrDollar-nv);
-        System.out.println("ds "+this.nbrDollar);
+
         currencies.put(bit,nv);
 
 
