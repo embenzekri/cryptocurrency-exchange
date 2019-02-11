@@ -12,4 +12,5 @@ This simple test demonstrate a cryptocurrency bank that allow customers to sell 
 - The cryptocurrency bank have a list of customers that are selling The cryptocurrencies
 - The cryptocurrency price calculation is based on the Metcalfes's Law.
 - The cryptocurrency price = n^2-n where n is the number of customer that are buying the cryptocurrency.
+- test
 
