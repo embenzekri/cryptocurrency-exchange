@@ -27,7 +27,7 @@ public class Customer {
 
     boolean isExistCurrencies() {
         if (currenciesSolde == null) {
-            currenciesSolde = new HashMap<String, Integer>();
+            currenciesSolde = new HashMap<>();
             return false;
         } else {
             return true;
@@ -41,19 +41,13 @@ public class Customer {
     }
 
     void initCurrencies() {
-        currenciesSolde = new HashMap<String, Integer>();
+        currenciesSolde = new HashMap<>();
         currenciesSolde.put("$", 0);
     }
 
     @Override
     public String toString() {
         String balance = "";
-//        for (String key : currenciesSolde.keySet()) {
-//            balance += currenciesBalanceParser(key);
-//
-//            balance +=",";
-//        }
-
         Iterator currenciesIterator =  currenciesSolde.entrySet().iterator();
 
         while(currenciesIterator.hasNext()) {
