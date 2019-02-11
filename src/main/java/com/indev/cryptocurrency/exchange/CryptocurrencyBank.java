@@ -1,14 +1,37 @@
 package com.indev.cryptocurrency.exchange;
 
-public class CryptocurrencyBank {
-    public void addSupportedCryptoCurrency(String bitcoin) {
-        
+import java.util.ArrayList;
+import java.util.List;
+
+public class CryptocurrencyBank{
+
+    private List<String> supportedCryptoCurrency = new ArrayList<>();
+    private List<AbstractCustomer> cryptocurrencySellers = new ArrayList<>();
+
+    private CurrencyPriceCalculator priceCalculator = new DefaultCurrencyPriceCalculator();
+
+    public void addSupportedCryptoCurrency(String cryptoCurrencyName) {
+        supportedCryptoCurrency.add(cryptoCurrencyName);
     }
 
-    public int requestTransaction(Customer buyerCustomer, int i, String bitcoin) {
-        return 0;
+    public int requestTransaction(Customer buyer, int cryptoAmount, String cryptoName) {
+        AbstractCustomer seller = getSellerByCryptoName(cryptoName);
+        int cryptoPriceByBuyersNumber = priceCalculator.getCurrencyPrice(cryptoAmount);
+
+        seller.doTransaction(TransactionRequest
+                .makeTransaction(cryptoPriceByBuyersNumber, cryptoAmount,cryptoName,buyer));
+        return cryptoAmount;
     }
 
-    public void addSeller(Customer sellerCustomer) {
+    private AbstractCustomer getSellerByCryptoName(String cryptoName) {
+        return cryptocurrencySellers.stream()
+                .filter(seller -> seller.hasCryptocurrency(cryptoName))
+                .findFirst()
+                .orElse(new NullCustomer());
+    }
+
+
+    void addSeller(Customer sellerCustomer) {
+        cryptocurrencySellers.add(sellerCustomer);
     }
 }

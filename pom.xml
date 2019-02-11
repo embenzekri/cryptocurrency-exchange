@@ -10,6 +10,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <groupId>com.indev.cryptocurrency.exchange</groupId>
     <artifactId>cryptocurrency-exchange</artifactId>
     <version>1.0-SNAPSHOT</version>

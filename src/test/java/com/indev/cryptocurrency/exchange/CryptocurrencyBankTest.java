@@ -35,11 +35,9 @@ public class CryptocurrencyBankTest {
         assertThat(sellerCustomer.toString(), equalTo("0:$,10:Bitcoin"));
     }
 
-
     @Test
     public void shouldPrintCustomerWalletWithEthereum() {
         Customer sellerCustomer = new Customer().withCryptocurrency("Ethereum", 10);
-
         assertThat(sellerCustomer.toString(), equalTo("0:$,10:Ethereum"));
     }
 
@@ -48,7 +46,9 @@ public class CryptocurrencyBankTest {
      */
     @Test
     public void shouldPrintCustomerWalletWithBalance() {
-        Customer sellerCustomer = new Customer().withBalance(10000).withCryptocurrency("Bitcoin", 10);
+        Customer sellerCustomer = new Customer()
+                .withBalance(10000)
+                .withCryptocurrency("Bitcoin", 10);
 
         assertThat(sellerCustomer.toString(), equalTo("10000:$,10:Bitcoin"));
     }
@@ -116,8 +116,11 @@ public class CryptocurrencyBankTest {
         Customer firstBuyer = new Customer().withBalance(100);
         Customer secondBuyer = new Customer().withBalance(100);
         Customer thirdBuyer = new Customer().withBalance(100);
+        //3
         int firstBoughtQuantity = cryptocurrencyBank.requestTransaction(firstBuyer, 3, "Bitcoin");
+        //6
         int secondBoughtQuantity = cryptocurrencyBank.requestTransaction(secondBuyer, 3, "Bitcoin");
+        //18
         int thirdBoughtQuantity = cryptocurrencyBank.requestTransaction(thirdBuyer, 3, "Bitcoin");
 
         assertThat(firstBoughtQuantity, equalTo(3));
