@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class Customer {
 
     private HashMap<String, Integer> balanceHashMap = new HashMap<>();
+
     private static final String DOLLAR = "Dollar";
     private static final String BITCOIN = "Bitcoin";
     private static final String ETHEREUM = "Ethereum";
@@ -41,5 +42,23 @@ public class Customer {
         if(isCurrencyExist(BITCOIN)) present += "," + balanceHashMap.get(BITCOIN) + ":" + BITCOIN;
         if(isCurrencyExist(ETHEREUM)) present += "," + balanceHashMap.get(ETHEREUM) + ":" + ETHEREUM;
         return present;
+    }
+
+    public boolean sellCurrency(int quantiteCurrency, String currency) {
+        if(isCurrencyExist(currency)){
+            balanceHashMap.put(currency, balanceHashMap.get(currency) - quantiteCurrency);
+            balanceHashMap.put(DOLLAR, balanceHashMap.get(DOLLAR) + quantiteCurrency);
+            return true;
+        }
+        return false;
+    }
+
+    public void buyCurrency(int quantiteCurrency, String currency) {
+        if(!isCurrencyExist(currency)){
+            balanceHashMap.put(currency, 0);
+            balanceHashMap.put(currency, balanceHashMap.get(currency) + quantiteCurrency);
+            balanceHashMap.put(DOLLAR, balanceHashMap.get(DOLLAR) - quantiteCurrency);
+        }
+
     }
 }
