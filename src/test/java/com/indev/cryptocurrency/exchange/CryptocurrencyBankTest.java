@@ -30,7 +30,7 @@ public class CryptocurrencyBankTest {
      */
     @Test
     public void shouldPrintCustomerWalletWithBitcoin() {
-        Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
+        Customer sellerCustomer = new Customer().withCryptoCurrency("Bitcoin", 10);
 
         assertThat(sellerCustomer.toString(), equalTo("0:$,10:Bitcoin"));
     }
@@ -38,7 +38,7 @@ public class CryptocurrencyBankTest {
 
     @Test
     public void shouldPrintCustomerWalletWithEthereum() {
-        Customer sellerCustomer = new Customer().withCryptocurrency("Ethereum", 10);
+        Customer sellerCustomer = new Customer().withCryptoCurrency("Ethereum", 10);
 
         assertThat(sellerCustomer.toString(), equalTo("0:$,10:Ethereum"));
     }
@@ -48,7 +48,7 @@ public class CryptocurrencyBankTest {
      */
     @Test
     public void shouldPrintCustomerWalletWithBalance() {
-        Customer sellerCustomer = new Customer().withBalance(10000).withCryptocurrency("Bitcoin", 10);
+        Customer sellerCustomer = new Customer().withBalance(10000).withCryptoCurrency("Bitcoin", 10);
 
         assertThat(sellerCustomer.toString(), equalTo("10000:$,10:Bitcoin"));
     }
@@ -71,7 +71,7 @@ public class CryptocurrencyBankTest {
      */
     @Test
     public void shouldBuyCryptocurrency() {
-        Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
+        Customer sellerCustomer = new Customer().withCryptoCurrency("Bitcoin", 10);
 
         cryptocurrencyBank.addSeller(sellerCustomer);
 
@@ -88,7 +88,7 @@ public class CryptocurrencyBankTest {
      */
     @Test
     public void shouldNotBuyCryptocurrencyWhenNotFound() {
-        Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
+        Customer sellerCustomer = new Customer().withCryptoCurrency("Bitcoin", 10);
 
         cryptocurrencyBank.addSeller(sellerCustomer);
 
@@ -109,7 +109,7 @@ public class CryptocurrencyBankTest {
      */
     @Test
     public void shouldBuyCryptocurrencyMetcalfeLaw() {
-        Customer sellerCustomer = new Customer().withCryptocurrency("Bitcoin", 10);
+        Customer sellerCustomer = new Customer().withCryptoCurrency("Bitcoin", 10);
 
         cryptocurrencyBank.addSeller(sellerCustomer);
 
