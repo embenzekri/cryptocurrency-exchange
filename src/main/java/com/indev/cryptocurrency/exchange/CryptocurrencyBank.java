@@ -16,7 +16,7 @@ public class CryptocurrencyBank {
 
     public int requestTransaction(Customer buyerCustomer, int numberOfCryptoCurrency, String cryptoCurrency) {
         if (hasCryptoCurrency(cryptoCurrency)) {
-            Customer sellerCustomer = sellers.remove(0);
+            Customer sellerCustomer = getSupportedSeller(cryptoCurrency).remove(0);
             numberOfBuyers++;
             int cryptoCurrencyPrice = 1;
             if(numberOfBuyers > 1)
@@ -29,10 +29,19 @@ public class CryptocurrencyBank {
     }
 
     private boolean hasCryptoCurrency(String cryptoCurrency) {
-        return supportedCryptoCurrencies.contains(cryptoCurrency) && !sellers.isEmpty() && sellers.get(0).has(cryptoCurrency);
+        return supportedCryptoCurrencies.contains(cryptoCurrency) && !getSupportedSeller(cryptoCurrency).isEmpty();
     }
 
     public void addSeller(Customer sellerCustomer) {
         sellers.add(sellerCustomer);
+    }
+
+
+    private List<Customer> getSupportedSeller(String cryptoCurrency) {
+        List<Customer> supportedSellers = new ArrayList<>();
+        for (Customer seller : sellers)
+            if (seller.has(cryptoCurrency))
+                supportedSellers.add(seller);
+        return supportedSellers;
     }
 }
