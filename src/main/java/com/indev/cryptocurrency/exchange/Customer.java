@@ -5,41 +5,38 @@ import java.util.List;
 public class Customer {
 
     private CryptoCurrency cryptoCurrency ;
-    private int solde ;
+    private int wallet ;
 
 
-    public Customer withCryptocurrency(String bitcoin, int i) {
-        cryptoCurrency = new CryptoCurrency(bitcoin,i);
+    public Customer withCryptocurrency(String bitcoin, int wallet) {
+        cryptoCurrency = new CryptoCurrency(bitcoin,wallet);
         return this;
     }
 
 
-    public Customer withBalance(int i) {
-        solde = i ;
+    public Customer withBalance(int wallet) {
+        this.wallet = wallet ;
         return this;
     }
 
     @Override
     public String toString() {
         if (cryptoCurrency != null)
-            return solde+":$,"+cryptoCurrency;
-            return solde+":$";
+            return wallet+":$,"+cryptoCurrency;
+            return wallet+":$";
 
     }
 
     public void decreaseSolde(int soldeToDecrease){
-        if (solde < soldeToDecrease)
+        if (wallet < soldeToDecrease)
             return;
-        solde -=soldeToDecrease;
+        wallet -=soldeToDecrease;
     }
 
     public void increaseSolde(int soldeToDecrease){
-        solde +=soldeToDecrease;
+        wallet +=soldeToDecrease;
     }
 
-    public void increaseCryptocurrency(int cryptoAdd){
-        cryptoCurrency.increaseSolde(cryptoAdd);
-    }
     public void decreaseCryptocurrency(int cryptoSous){
         cryptoCurrency.decreaseSolde(cryptoSous);
     }

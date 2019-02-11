@@ -15,14 +15,7 @@ public class CryptoCurrency {
     public String toString() {
         return solde+":"+name;
     }
-    public boolean isNull(){
-        if (name == null)
-            return true;
-        return false;
-    }
-    public void increaseSolde(int soldeAdd){
-        solde +=soldeAdd;
-    }
+
     public void decreaseSolde(int soldeSous){
         if (solde < soldeSous) return;
         solde -=soldeSous;
