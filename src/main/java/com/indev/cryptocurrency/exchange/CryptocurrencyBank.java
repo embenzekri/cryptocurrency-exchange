@@ -37,13 +37,11 @@ public class CryptocurrencyBank {
     }
 
     private boolean isExistSupportedCryptoCurrency() {
-        if (supportedCryptoCurrency == null) return false;
-        else
-            return true;
+        return supportedCryptoCurrency != null;
     }
 
     private void initSupportedCryptoCurrency() {
-        supportedCryptoCurrency = new ArrayList<String>();
+        supportedCryptoCurrency = new ArrayList<>();
     }
 
     private void initSellers() {
@@ -51,8 +49,7 @@ public class CryptocurrencyBank {
     }
 
     boolean isExistSeller() {
-        if (sellers == null) return false;
-        else return true;
+       return sellers != null;
     }
     Integer mecalfeLawQueue(int queue){
         if (queue==1) return 1;

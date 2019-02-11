@@ -26,17 +26,12 @@ public class Customer {
     return this;}
 
     boolean isExistCurrencies() {
-        if (currenciesSolde == null) {
-            return false;
-        } else {
-            return true;
-        }
+
+        return (currenciesSolde != null);
     }
 
     public boolean isExistCurrency(String currency) {
-        if (currenciesSolde.get(currency) == null) {
-            return false;
-        } else return true;
+        return (currenciesSolde.get(currency) != null);
     }
 
     void initCurrencies() {
@@ -46,19 +41,17 @@ public class Customer {
 
     @Override
     public String toString() {
-        String balance = "";
+        String balance;
+        StringBuilder stringBuilder = new StringBuilder();
         Iterator currenciesIterator =  currenciesSolde.entrySet().iterator();
 
         while(currenciesIterator.hasNext()) {
             Map.Entry entry = (Map.Entry) currenciesIterator.next();
-            balance+= currenciesBalanceParser(entry.getKey().toString());
-            if (currenciesIterator.hasNext())balance +=",";
+            stringBuilder.append(currenciesBalanceParser(entry.getKey().toString()));
+            if (currenciesIterator.hasNext())   stringBuilder.append(",");
+
         }
-
-
-
-
-
+        balance=stringBuilder.toString();
         return balance;
     }
 
