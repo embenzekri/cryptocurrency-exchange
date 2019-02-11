@@ -2,24 +2,29 @@ package com.indev.cryptocurrency.exchange;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class CryptocurrencyBank {
 
-    HashMap<String, ArrayList<Customer>> customersByCryptoCurrency = new HashMap<>();
-    ArrayList<Customer> customers = new ArrayList<>();
-    ArrayList<Customer> sellerCustomers = new ArrayList<>();
+    HashMap<String, List<Customer>> sellersCustomersByCryptoCurrency = new HashMap<>();
+    List<Customer> sellersCustomers = new ArrayList<>();
+
+
+
 
     public void addSupportedCryptoCurrency(String cryptoCurrency) {
-        customersByCryptoCurrency.put(cryptoCurrency,null);
+        sellersCustomersByCryptoCurrency.put(cryptoCurrency,null);
     }
 
-    public int requestTransaction(Customer customer, int quantity, String bitcoin) {
-        if(sellerCustomers.size()==0)
-            return  0;
-       return 1;
+    public int requestTransaction(Customer customer, int quantity, String cryptoCurrency) {
+
+
+        return SaleOperation.calculSaleQuantity(sellersCustomersByCryptoCurrency,customer,quantity,cryptoCurrency);
     }
 
     public void addSeller(Customer sellerCustomer) {
-        sellerCustomers.add(sellerCustomer);
+
+        sellersCustomers.add(sellerCustomer);
+        sellersCustomersByCryptoCurrency.replace(sellerCustomer.getCryptoCurrency(),sellersCustomers);
     }
 }

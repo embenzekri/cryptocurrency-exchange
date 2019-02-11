@@ -3,14 +3,17 @@ package com.indev.cryptocurrency.exchange;
 import java.util.HashMap;
 
 public class Customer {
-    private HashMap<String,Integer> cryptocurrencies = new HashMap<>();
+    private String cryptoCurrency="" ;
+    private int cryptoCurrencyQuantity=0;
     private int balance;
 
+
+
+
     public Customer withCryptocurrency(String cryptocurrency, int quantity) {
-        if(cryptocurrencies.get(cryptocurrency)==null)
-            cryptocurrencies.put(cryptocurrency,quantity);
-        else
-            cryptocurrencies.replace(cryptocurrency,cryptocurrencies.get(cryptocurrency)+quantity);
+        this.cryptoCurrency = cryptocurrency;
+        this.cryptoCurrencyQuantity+=quantity;
+
         return this;
     }
 
@@ -19,16 +22,28 @@ public class Customer {
         return this;
     }
 
-    public HashMap<String, Integer> getCryptocurrencies() {
-        return cryptocurrencies;
+
+
+    public void reduceBalance(int balance){
+        this.balance-=balance;
     }
 
-    public int getBalance() {
-        return balance;
+
+    public String getCryptoCurrency() {
+        return cryptoCurrency;
     }
 
     @Override
     public String toString() {
-        return CustomerDisplayer.displayCustomer(this);
+
+
+            String displayCustomer = this.balance+":$";
+            if(!cryptoCurrency.trim().isEmpty()){
+                displayCustomer+=","+cryptoCurrencyQuantity+":"+cryptoCurrency;
+            }
+            return displayCustomer;
+
     }
+
+
 }
