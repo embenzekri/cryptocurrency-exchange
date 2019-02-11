@@ -35,13 +35,13 @@ class CustomerController {
     @RequestMapping(value="cryptocurrencies",method = RequestMethod.POST)
     public List<String> addCurrencie(@RequestParam("name") String name)
     {
-        cryptocurrencyBank.getCryptoCurrency().add(name) ;
+        cryptocurrencyBank.addSupportedCryptoCurrency(name); ;
         return cryptocurrencyBank.getCryptoCurrency() ;
     }
     @RequestMapping(value="cryptocurrencies",method = RequestMethod.DELETE)
     public List<String> deleteCurrencie(@RequestParam("name") String name)
     {
-        cryptocurrencyBank.getCryptoCurrency().remove(name);
+        cryptocurrencyBank.deleteSupportdedCryptoCurrency(name);
         return cryptocurrencyBank.getCryptoCurrency() ;
     }
 }

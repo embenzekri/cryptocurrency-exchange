@@ -12,9 +12,13 @@ public class CryptocurrencyBank {
     private int valueOfCurrency = 1 ;
      List<Customer> sellers = new ArrayList<>() ;
     private List<Customer> buyers = new ArrayList<>() ;
-    public void addSupportedCryptoCurrency(String bitcoin) {
+    public void addSupportedCryptoCurrency(String name) {
 
-        cryptoCurrency.add(bitcoin) ;
+        cryptoCurrency.add(name) ;
+    }
+    public void deleteSupportdedCryptoCurrency(String name)
+    {
+        cryptoCurrency.remove(name) ;
     }
     public int requestTransaction(Customer customer, int quantite, String cryptoCurrency) {
         customer.setCryptoCurrency(cryptoCurrency);
